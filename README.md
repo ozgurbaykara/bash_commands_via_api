@@ -8,3 +8,15 @@ npm i Installing packages on package.json
 ```bash
 npm i
 ```
+
+## How to run
+
+Create the log file
+
+Create .env file with sample and change the directory for LOGFILE_PATH with your file path
+
+with
+```
+node app.js
+```
+start the application
