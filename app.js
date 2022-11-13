@@ -1,7 +1,8 @@
 const application = require('./Application');
 
 const server = application
-    .enableCORS(3000)
+    .validate()
+    .enableCORS(process.env.SERVER_PORT || 3000)
     .initMainRouter()
     .listen();
 

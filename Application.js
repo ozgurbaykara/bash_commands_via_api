@@ -46,6 +46,12 @@ class Application {
         route(this.mainRouter);
         return this;
     }
+    validate(){
+        if(process.env.LOGFILE_PATH === ''){
+            throw new Error('LOGFILE_PATH cannot be empty');
+        }
+        return this;
+    }
 }
 
 module.exports = new Application();
