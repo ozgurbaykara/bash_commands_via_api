@@ -1,4 +1,25 @@
+const moment = require('moment-timezone');
+const fs = require('fs');
 const {exec} = require('child_process');
+const timezone = 'Europe/Moscow';
+
+/**
+ * log command, user, time, runTime info to logFile
+ * @param {String} command
+ * @param {String} user
+ * @param {Number} runTime
+ */
+function logCommand({command, user, runTime}) {
+    return fs.appendFile(process.env.LOGFILE_PATH, `${command} \t ${user} \t ${nowTime()} \t ${runTime} ms`, function (err) {
+        if (err) throw err;
+    });
+}
+
+function nowTime() {
+    return moment()
+        .tz(timezone)
+        .format(null);
+}
 
 /**
  * execute command
@@ -16,6 +37,7 @@ const runCommand = ({command, commandParameters, user}) => {
         if(err) throw err;
     });
     const t1 = performance.now();
+    return logCommand({command: `${command} ${parameters}`, user, runTime: t1 - t0});
 };
 
 module.exports = {
