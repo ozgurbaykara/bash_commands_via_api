@@ -15,6 +15,11 @@ Create the log file
 
 Create .env file with sample and change the directory for LOGFILE_PATH with your file path
 
+### Important Note
+.env LOGFILE_PATH cannot be empty
+
+```LOGFILE_PATH:<directory_path>/logs/logFile.txt```
+
 with
 ```
 node app.js
